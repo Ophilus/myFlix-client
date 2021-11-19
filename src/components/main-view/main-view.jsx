@@ -1,10 +1,20 @@
 import React from 'react';
+import axios from 'axios';
+
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
+import '../../img/forrestgump.jpg';
 import '../../img/Inception.jpg';
-import '../../img/ShawshankRedemption.jpg';
-import '../../img/Gladiator.jpg';
+import '../../img/Interstellar.jpg';
+import '../../img/lockstockandtwosmokingbarrels.jpg';
+import '../../img/lotrthefellowshipofthering.jpg';
+import '../../img/lotrthereturnoftheking.jpg';
+import '../../img/lotrthetwotowers.jpg';
+import '../../img/silenceofthelambs.jpg';
+import '../../img/thegreenmile.jpg';
+import '../../img/theshawshankredemption.jpg';
 
 
 export class MainView extends React.Component {
@@ -12,33 +22,54 @@ export class MainView extends React.Component {
   constructor(){
     super();
     this.state = {
-      movies: [
-        { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: 'Inception.e861a40d.jpg'},
-        { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: 'ShawshankRedemption.3d9eac20.jpg'},
-        { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: 'Gladiator.a2f1f3c2.jpg'}
-      ]
+      movies: [],
+      selectedMovie: null,
+      user: null
     }
   }
 
-  setSelectedMovie(newSelectedMovie) {
+  componentDidMount(){
+    axios.get('https://movieapi-1823.herokuapp.com/movies')
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  setSelectedMovie(movie) {
     this.setState({
-      selectedMovie: newSelectedMovie
+      selectedMovie: movie
     });
   }
+
+  onLoggedIn(user) {
+    this.setState({
+        user
+    });
+}
 
   render() {
     const { movies, selectedMovie } = this.state;
 
 
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+    if (movies.length === 0) return <div className="main-view"/>;
+    
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    
+
 
     return (
       <div className="main-view">
         {selectedMovie
           ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
           : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-          ))
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
+         ))
         }
       </div>
     );
