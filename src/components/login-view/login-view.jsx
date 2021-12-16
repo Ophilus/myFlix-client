@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Form, Button, Card, Row, Navbar, Nav, Container } from 'react-bootstrap';
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
@@ -14,18 +15,36 @@ export function LoginView(props) {
     };
 
     return (
-        <form>
-            <label>
-                Username:
-                <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-            </label><br />
-            <label>
-                Password:
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-            </label><br />
-            <button type="submit" onClick={handleSubmit}>Submit</button><br />
-            <a href="#">Register</a>
-        </form>
+      <div>
+      <Navbar expand="lg" bg="#808080" className="mainNavbar">
+        <Container>
+        <Navbar.Brand href="/">My Flix</Navbar.Brand>
+            <Nav className="me-auto">
+            <Nav.Link href="#register">Sign up</Nav.Link>
+            </Nav>
+        </Container>
+        </Navbar>
+        <Card className="py-4 shadow"> 
+         <Row className="justify-content-md-center">
+            
+        
+        <Form >
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" onChange={e => setUsername(e.target.value)} placeholder="Enter a username" required />
+      </Form.Group>
+
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control type="password" onChange={e => setPassword(e.target.value)} placeholder="Enter a password" required />
+      </Form.Group>
+      
+      <Button className="m-3" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+      
+    </Form>
+    </Row>
+    </Card>
+    </div>
     );
 }
 
