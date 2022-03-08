@@ -1,0 +1,10 @@
+.favorite-movie{
+    margin-bottom: 15px;
+    card {
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+       
+    }
+}
