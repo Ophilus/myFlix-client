@@ -16,16 +16,16 @@ function FavoriteMovies({ movies, favoriteMoviesId, removeFavorite }) {
                 {favoriteMoviesId.length === 0 && (
                     <div className="text-center">No Favorite Movies</div>
                 )}
-                
-                    {favoriteMoviesId.length > 0 &&
-                        movies.map(({ ImagePath, Title, _id}) => {
-                            if (
-                                _id ===
-                                favoriteMoviesId.find((fMovie) => fMovie === _id)
-                            ) {
-                                return (
-                                    <Col xs={12} md={6} lg={5} key={_id} >
-                                        <Card className="favorite-movie card-content" >
+
+                {favoriteMoviesId.length > 0 &&
+                    movies.map(({ ImagePath, Title, _id }) => {
+                        if (
+                            _id ===
+                            favoriteMoviesId.find((fMovie) => fMovie === _id)
+                        ) {
+                            return (
+                                <Col xs={12} md={6} lg={5} key={_id} >
+                                    <Card className="favorite-movie card-content" >
                                         <Link to={`/movies/${_id}`}>
                                             <Card.Img
                                                 className="fav-poster"
@@ -33,20 +33,20 @@ function FavoriteMovies({ movies, favoriteMoviesId, removeFavorite }) {
                                                 src={`../${ImagePath}`}
                                             />
                                             <Card.Body style={{ backgroundColor: "white" }}>
-                                                
-                                                    <h4 className="movie_title">
-                                                        {Title}
-                                                    </h4>
-                                                
+
+                                                <h4 className="movie_title">
+                                                    {Title}
+                                                </h4>
+
                                                 <Button size="sm" variant="danger" value={_id} onClick={(e) => removeFavorite(e, _id)}>Remove</Button>
                                             </Card.Body>
-                                            </Link>
-                                        </Card>
-                                    </Col>
-                                );
-                            }
-                        })}
-                
+                                        </Link>
+                                    </Card>
+                                </Col>
+                            );
+                        }
+                    })}
+
 
 
             </Row>
