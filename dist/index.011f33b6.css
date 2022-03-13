@@ -1,0 +1,14 @@
+
+.favorite-movie {
+  margin-bottom: 15px;
+}
+.favorite-movie card {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.011f33b6.css.map */
