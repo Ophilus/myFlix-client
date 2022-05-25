@@ -30,7 +30,7 @@ function FavoriteMovies({ movies, favoriteMoviesId, removeFavorite }) {
                                             <Card.Img
                                                 className="fav-poster"
                                                 variant="top"
-                                                src={`../${ImagePath}`}
+                                                src={`${ImagePath}`}
                                             />
                                             <Card.Body style={{ backgroundColor: "white" }}>
 
