@@ -14,16 +14,6 @@ import { GenreView } from '../genre-view/genre-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { NavbarView } from '../navbar-view/navbar-view';
 
-import '../../img/forrestgump.jpg';
-import '../../img/Inception.jpg';
-import '../../img/Interstellar.jpg';
-import '../../img/lockstockandtwosmokingbarrels.jpg';
-import '../../img/lotrthefellowshipofthering.jpg';
-import '../../img/lotrthereturnoftheking.jpg';
-import '../../img/lotrthetwotowers.jpg';
-import '../../img/silenceofthelambs.jpg';
-import '../../img/thegreenmile.jpg';
-import '../../img/theshawshankredemption.jpg';
 import { ProfileView } from '../profile-view/profile-view';
 
 
