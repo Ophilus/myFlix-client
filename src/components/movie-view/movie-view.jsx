@@ -103,7 +103,7 @@ export class MovieView extends React.Component {
       <Card className="shadow">
         <Row>
           <Col>
-            <Card.Img variant="top" src={`${movie.ImagePath}`} />
+            <Card.Img variant="top" src={`${movie.ImagePath}`} alt="movieItem" />
           </Col>
           <Col>
             <Card.Body>
